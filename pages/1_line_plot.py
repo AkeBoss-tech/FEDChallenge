@@ -92,7 +92,7 @@ def plot_series(series_dict, title, legend_text_generator, from_date='2000-01-01
     # Plot each series
     for idx in range(len(series_dict)):
         plot_type(x='Date', y=f'Value_{idx}', data=merged_df, 
-                     label=legend_text_generator[idx], linewidth=2)
+                     label=legend_text_generator[idx], linewidth=2, marker='o')
 
     # Enhance the title and labels
     plt.title(title, fontsize=18, weight='bold', color='#333333')
