@@ -62,10 +62,11 @@ def plot_series_with_vlines(series_dict, title, legend_text_generator, from_date
         else:
             merged_df = pd.merge(merged_df, df, on="Date", how="inner")
 
-    # use median difference to find periods in a year
-    if periods_in_year is None:
-        median_diff = merged_df['Date'].diff().median()
-        periods_in_year = pd.Timedelta('365 days') / median_diff
+    # If frequency is not inferred, use median difference
+    median_diff = merged_df['Date'].diff().median()
+    st.write("Periods in year user inputted " + str(periods_in_year))
+    periods_in_year = round(pd.Timedelta('365 days') / median_diff)
+    st.write("Periods in year calculated " + str(periods_in_year))
 
     # If change_in is True, calculate either diff or percentage change
     if change_in:
