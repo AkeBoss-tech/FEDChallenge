@@ -1,5 +1,5 @@
 import streamlit as st
-import pandas as pd
+import pandas as pd, numpy as np
 import seaborn as sns, os
 import matplotlib.pyplot as plt
 from fredapi import Fred
@@ -63,10 +63,10 @@ def plot_series_with_vlines(series_dict, title, legend_text_generator, from_date
             merged_df = pd.merge(merged_df, df, on="Date", how="inner")
 
     # If frequency is not inferred, use median difference
-    median_diff = merged_df['Date'].diff().median()
+    median_diff = (merged_df['Date'].diff() / np.timedelta64(1, 'D')).median()
     st.write("Periods in year user inputted " + str(periods_in_year))
     periods_in_year_calc = round(pd.Timedelta('365 days') / median_diff)
-    st.write("Periods in year calculated " + str(periods_in_year))
+    st.write("Periods in year calculated " + str(periods_in_year_calc))
 
     if periods_in_year is None:
         periods_in_year = periods_in_year_calc
