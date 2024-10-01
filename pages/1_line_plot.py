@@ -148,6 +148,8 @@ if st.button("Plot Series"):
     if percent_change and year_over_year:
         st.error("Please select only one of 'Percent Change' or 'Year Over Year Change'.")
     
+    if periods_in_year == 0: periods_in_year = None
+
     plot_series(
         series_dict=series_dict, 
         title=title, 
