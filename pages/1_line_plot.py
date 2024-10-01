@@ -76,7 +76,7 @@ def plot_series(series_dict, title, legend_text_generator, from_date='2000-01-01
 
     # If year_over_year is True, calculate YoY percentage change
     if year_over_year:
-        st.write("Periods in year " + periods_in_year)
+        st.write("Periods in year " + str(periods_in_year))
         for idx in range(len(series_dict)):
             merged_df[f'Value_{idx}'] = merged_df[f'Value_{idx}'].pct_change(int(periods_in_year)) * 100
 

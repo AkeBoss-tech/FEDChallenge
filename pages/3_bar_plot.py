@@ -78,7 +78,7 @@ def plot_series_with_vlines(series_dict, title, legend_text_generator, from_date
 
     # If year_over_year is True, calculate YoY percentage change
     if year_over_year:
-        st.write("Periods in year " + periods_in_year)
+        st.write("Periods in year " + str(periods_in_year))
         for idx in range(len(series_dict)):
             merged_df[f'Value_{idx}'] = merged_df[f'Value_{idx}'].pct_change(int(periods_in_year)) * 100
 
@@ -135,7 +135,7 @@ def plot_series_with_vlines(series_dict, title, legend_text_generator, from_date
     st.pyplot(plt)
 
 # Streamlit app
-st.title("Economic Series Plotter")
+st.title("Economic Bar Plotter")
 
 # User input for series
 st.sidebar.header("Series Input")
