@@ -160,7 +160,7 @@ change_in = st.checkbox("Show Change in Values", value=False)
 percent_change = st.checkbox("Show Percent Change", value=False)
 year_over_year = st.checkbox("Year Over Year Change", value=False)
 legend_loc = st.selectbox("Legend Location", options=["upper right", "upper left", "lower right", "lower left"])
-periods_in_year = st.number_input("Periods in Year", min_value=1, max_value=52, value=12)
+periods_in_year = st.number_input("Periods in Year", min_value=0, max_value=52, value=12)
 line_width = st.number_input("Bar Width", min_value=1, max_value=50, value=10)
 
 # Generate plot
