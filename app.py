@@ -6,8 +6,8 @@ from fredapi import Fred
 from bls import get_series
 
 # load APIs
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 # Configure FRED and BLS API keys
 API_KEY = os.getenv('FRED_API_KEY')

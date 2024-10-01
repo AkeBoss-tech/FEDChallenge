@@ -4,4 +4,3 @@ matplotlib
 seaborn
 fredapi
 bls
-dotenv
