@@ -6,8 +6,8 @@ from fredapi import Fred
 from bls import get_series
 
 # load APIs
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 # Configure FRED and BLS API keys
 API_KEY = os.getenv('FRED_API_KEY')
@@ -76,6 +76,7 @@ def plot_series(series_dict, title, legend_text_generator, from_date='2000-01-01
 
     # If year_over_year is True, calculate YoY percentage change
     if year_over_year:
+        st.write("Periods in year " + periods_in_year)
         for idx in range(len(series_dict)):
             merged_df[f'Value_{idx}'] = merged_df[f'Value_{idx}'].pct_change(int(periods_in_year)) * 100
 
@@ -139,8 +140,8 @@ custom_text = st.text_input("Custom Source Text", value="Source: Federal Reserve
 change_in = st.checkbox("Show Change in Values", value=False)
 percent_change = st.checkbox("Show Percent Change", value=False)
 year_over_year = st.checkbox("Year Over Year Change", value=False)
-plot_type_func = sns.lineplot 
 legend_loc = st.selectbox("Legend Location", options=["upper right", "upper left", "lower right", "lower left"])
+periods_in_year = st.number_input("Periods in Year", min_value=1, max_value=52, value=12)
 
 # Generate plot
 if st.button("Plot Series"):
@@ -155,9 +156,9 @@ if st.button("Plot Series"):
         x_label=x_label, 
         y_label=y_label, 
         change_in=change_in, 
-        plot_type=plot_type_func, 
         legend_loc=legend_loc, 
         percent_change=percent_change, 
         year_over_year=year_over_year, 
-        custom_text=custom_text
+        custom_text=custom_text,
+        periods_in_year=periods_in_year 
     )
