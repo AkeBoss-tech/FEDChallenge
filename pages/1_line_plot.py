@@ -1,5 +1,5 @@
 import streamlit as st
-import pandas as pd, numpy as np
+import pandas as pd
 import seaborn as sns, os
 import matplotlib.pyplot as plt
 from fredapi import Fred
@@ -60,7 +60,7 @@ def plot_series(series_dict, title, legend_text_generator, from_date='2000-01-01
         else:
             merged_df = pd.merge(merged_df, df, on="Date", how="inner")
 
-    median_diff = (merged_df['Date'].diff() / np.timedelta64(1, 'D')).median()
+    median_diff = merged_df['Date'].diff().median()
     st.write("Periods in year user inputted " + str(periods_in_year))
     periods_in_year_calc = round(pd.Timedelta('365 days') / median_diff)
     st.write("Periods in year calculated " + str(periods_in_year_calc))
