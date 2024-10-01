@@ -1,7 +1,6 @@
-pandas
-seaborn
-matplotlib 
 numpy
-os
+pandas
+matplotlib 
+seaborn
 fredapi
 bls
