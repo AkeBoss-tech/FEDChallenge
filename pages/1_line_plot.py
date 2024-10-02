@@ -19,7 +19,7 @@ fred = Fred(api_key=API_KEY)
 # Plot line FRED or BLS data
 def plot_series(series_dict, title, legend_text_generator, from_date='2000-01-01', x_label='Date', y_label='Series Value', 
                 change_in=False, plot_type=sns.lineplot, legend_loc='upper right', percent_change=False, year_over_year=False, periods_in_year=None,
-                custom_text='Source: Federal Reserve Economic Data'):
+                custom_text='Source: Federal Reserve Economic Data', marker='o'):
     # Initialize an empty DataFrame for merging
     merged_df = pd.DataFrame()
 
@@ -92,7 +92,7 @@ def plot_series(series_dict, title, legend_text_generator, from_date='2000-01-01
     # Plot each series
     for idx in range(len(series_dict)):
         plot_type(x='Date', y=f'Value_{idx}', data=merged_df, 
-                     label=legend_text_generator[idx], linewidth=2, marker='o')
+                     label=legend_text_generator[idx], linewidth=2, marker=marker)
 
     # Enhance the title and labels
     plt.title(title, fontsize=18, weight='bold', color='#333333')
@@ -140,6 +140,7 @@ from_date = st.date_input("From Date", value=pd.to_datetime("2000-01-01"))
 x_label = st.text_input("X-axis Label", value="Date")
 y_label = st.text_input("Y-axis Label", value="Series Value")
 custom_text = st.text_input("Custom Source Text", value="Source: Federal Reserve Economic Data")
+marker = st.text_input("Marker", value="o")
 change_in = st.checkbox("Show Change in Values", value=False)
 percent_change = st.checkbox("Show Percent Change", value=False)
 year_over_year = st.checkbox("Year Over Year Change", value=False)
@@ -165,5 +166,6 @@ if st.button("Plot Series"):
         percent_change=percent_change, 
         year_over_year=year_over_year, 
         custom_text=custom_text,
-        periods_in_year=periods_in_year 
+        periods_in_year=periods_in_year,
+        marker=marker
     )
