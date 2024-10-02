@@ -4,6 +4,7 @@ import seaborn as sns, os
 import matplotlib.pyplot as plt
 from fredapi import Fred
 from bls import get_series
+from matplotlib.lines import Line2D
 
 # load APIs
 # from dotenv import load_dotenv
