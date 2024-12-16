@@ -110,7 +110,14 @@ num_series = 2
 series_dict = {}
 
 for i in range(num_series):
-    series_id = st.sidebar.text_input(f"Series ID {i+1}", value=f"SAMPLE_SERIES_{i+1}")
+    series = f"SAMPLE_SERIES_{i+1}"
+
+    if i == 0:
+        series = "JTSJOR"
+    else if i == 1:
+        series= "UNRATE"
+
+    series_id = st.sidebar.text_input(f"Series ID {i+1}", value=series)
     source = st.sidebar.selectbox(f"Source for Series {i+1}", options=["FRED", "BLS"], key=f"source_{i+1}")
     series_dict[series_id] = source
 

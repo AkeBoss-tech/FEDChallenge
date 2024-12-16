@@ -149,7 +149,9 @@ series_dict = {}
 legend_text_generator = []
 
 for i in range(num_series):
-    series_id = st.sidebar.text_input(f"Series ID {i+1}", value=f"SAMPLE_SERIES_{i+1}")
+    series = f"SAMPLE_SERIES_{i+1}" if i != 0 else "UNRATE"
+
+    series_id = st.sidebar.text_input(f"Series ID {i+1}", value=series)
     source = st.sidebar.selectbox(f"Source for Series {i+1}", options=["FRED", "BLS"], key=f"source_{i+1}")
     legend_text = st.sidebar.text_input(f"Legend text for Series {i+1}", value=f"Series {i+1}")
     series_dict[series_id] = source
