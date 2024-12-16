@@ -114,7 +114,7 @@ for i in range(num_series):
 
     if i == 0:
         series = "JTSJOR"
-    else if i == 1:
+    elif i == 1:
         series= "UNRATE"
 
     series_id = st.sidebar.text_input(f"Series ID {i+1}", value=series)
