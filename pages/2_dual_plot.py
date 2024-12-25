@@ -110,15 +110,22 @@ num_series = 2
 series_dict = {}
 
 for i in range(num_series):
-    series_id = st.sidebar.text_input(f"Series ID {i+1}", value=f"SAMPLE_SERIES_{i+1}")
+    series = f"SAMPLE_SERIES_{i+1}"
+
+    if i == 0:
+        series = "UNRATE"
+    elif i == 1:
+        series= "JTSJOR"
+
+    series_id = st.sidebar.text_input(f"Series ID {i+1}", value=series)
     source = st.sidebar.selectbox(f"Source for Series {i+1}", options=["FRED", "BLS"], key=f"source_{i+1}")
     series_dict[series_id] = source
 
 # Other inputs
 title = st.text_input("Plot Title", value="Economic Data Plot")
 from_date = st.date_input("From Date", value=pd.to_datetime("2000-01-01"))
-x_label = st.text_input("X-axis Label", value="Date")
-y_label = st.text_input("Y-axis Label", value="Series Value")
+x_label = st.text_input("X-axis Label", value="UNRATE")
+y_label = st.text_input("Y-axis Label", value="JTSJOR")
 custom_text = st.text_input("Custom Source Text", value="Source: Federal Reserve Economic Data")
 legend_loc = st.selectbox("Legend Location", options=["upper right", "upper left", "lower right", "lower left"])
 ignore_year = st.number_input("Ignore Years Before", min_value=2000, max_value=2022, value=2020)
