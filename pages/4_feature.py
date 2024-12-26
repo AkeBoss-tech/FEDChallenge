@@ -10,12 +10,12 @@ import mpld3
 import streamlit.components.v1 as components
 
 # load APIs
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 # Configure FRED and BLS API keys
 API_KEY = os.getenv('FRED_API_KEY')
-os.environ['BLS_API_KEY'] = os.getenv('BLS_API_KEY')
+# os.environ['BLS_API_KEY'] = os.getenv('BLS_API_KEY')
 
 # Initialize FRED API
 fred = Fred(api_key=API_KEY)
